@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,21 +10,35 @@
 
 <body>
     <!-- The Main Header -->
-    <div class="mainHeader"><h1>Star Wars RPG!</h1></div>
-    
+    <div class="mainHeader">
+        <h1>Star Wars RPG!</h1>
+    </div>
+
     <!-- "Your Character" text -->
-    <div class="secondaryHeader"><h2>Your Character</h2></div>
+    <div class="secondaryHeader">
+        <h2>Your Character</h2>
+    </div>
 
     <!-- Div for character choices. -->
     <div class="characterPics">
-        <span id="kenobi">1</span>
-        <span id="skywalker">2</span>
-        <span id="sidious">3</span>
-        <span id="maul">4</span>
+        <span id="kenobi">
+            <a href="#" onclick=""><img src="./assets/images/kenobi.jpg" alt="BenKenobi"></a>
+        </span>
+        <span id="skywalker">
+            <a href="#" onclick=""><img src="./assets/images/skywalker.jpg" alt="LukeSkywalker"></a>
+        </span>
+        <span id="sidious">
+            <a href="#" onclick=""><img src="./assets/images/sidious.jpg" alt="DarthSidious"></a>
+        </span>
+        <span id="maul">
+            <a href="#" onclick=""><img src="./assets/images/maul.jpg" alt="DarthMaul"></a>
+        </span>
     </div>
 
     <!-- "Enemies Available" text -->
-    <div class="secondaryHeader"><h2>Enemies Available To Attack</h2></div>
+    <div class="secondaryHeader">
+        <h2>Enemies Available To Attack</h2>
+    </div>
 
     <!-- Div for Enemy pics -->
     <div class="enemyPics">
@@ -32,10 +47,10 @@
         <span id="sidiousEnemy">3</span>
         <span id="maulEnemy">4</span>
     </div>
-    
+
     <!-- Fight Section text -->
     <div class="secondaryHeader">Fight Section</div>
-    
+
     <!-- Attack Button -->
     <div id="button">(attack button goes here)</div>
 
@@ -66,4 +81,5 @@
 
     <script src="./assets/javascript/game.js"></script>
 </body>
+
 </html>

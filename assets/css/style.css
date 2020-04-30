@@ -3,6 +3,11 @@
     src: url('../fonts/StarWarsFont.ttf');
 }
 
+img{
+    width:175px;
+    height: 175px;
+}
+
 body{
     background: url("https://wallpapertag.com/wallpaper/full/8/4/6/653852-star-wars-background-wallpaper-1920x1080-large-resolution.jpg");
 }
