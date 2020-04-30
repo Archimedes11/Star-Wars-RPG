@@ -1,4 +1,5 @@
 let player;
+let enemy;
 
 
 function Player(characterType, health, attackPower, counterAttack){
