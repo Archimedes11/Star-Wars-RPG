@@ -1,3 +1,8 @@
+@font-face{
+    font-family:"starwars";
+    src: url('../fonts/StarWarsFont.ttf');
+}
+
 body{
     background: url("https://wallpapertag.com/wallpaper/full/8/4/6/653852-star-wars-background-wallpaper-1920x1080-large-resolution.jpg");
 }
@@ -6,10 +11,32 @@ body{
 
 
 
-.theHeader{
+.mainHeader{
     text-align: center;
+    font-family:"starwars";
 }
-.theHeader,
-.characterPics{
+
+
+
+
+
+.mainHeader,
+.secondaryHeader,
+.characterPics,
+#button,
+.battlePic,
+#attackText,
+#counterText
+{
     color: white;
+    font-family:"starwars";
+}
+
+.enemyPics{
+    color:red;
+}
+
+.battlePic{
+    color:gold;
+
 }
