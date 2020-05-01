@@ -1,15 +1,17 @@
 $(document).ready(function () {
 
+    // Not sure if i need lines 4-7....
     let player;
     let enemy;
     player = "";
     count = 0;
 
-    var kenobiPic = '<a href="#" onclick= count+=1 id="BenKenobi"><img src="./assets/images/kenobi.jpg" alt="BenKenobi"></img></a>';
-    var skywalkerPic = '<a href="#" onclick= count+=2 id="LukeSkywalker"><img src="./assets/images/skywalker.jpg" alt="LukeSkywalker"></a>';
-    var sidiousPic = '<a href="#" onclick= count+=3 id="DarthSidious"><img src="./assets/images/sidious.jpg" alt="DarthSidious"></a>';
-    var maulPic = '<a href="#" onclick= count+=4 id="DarthMaul" ><img src="./assets/images/maul.jpg" alt="DarthMaul"></a>';
+    var kenobiPic = '<a href="#" id="BenKenobi"><img src="./assets/images/kenobi.jpg" alt="BenKenobi"></img></a>';
+    var skywalkerPic = '<a href="#" id="LukeSkywalker"><img src="./assets/images/skywalker.jpg" alt="LukeSkywalker"></a>';
+    var sidiousPic = '<a href="#" id="DarthSidious"><img src="./assets/images/sidious.jpg" alt="DarthSidious"></a>';
+    var maulPic = '<a href="#" id="DarthMaul" ><img src="./assets/images/maul.jpg" alt="DarthMaul"></a>';
 
+    // Adds the pictures to the character choices div (lines 26-31 in HTML file)
     $("#kenobi").append(kenobiPic);
     $("#skywalker").append(skywalkerPic);
     $("#sidious").append(sidiousPic);
@@ -19,34 +21,35 @@ $(document).ready(function () {
     var currentGameState = {
         playerChosen: "",
         enemyChosen: "",
-        playerHealth: 0,
-        enemyHealth: 0,
     }
 
     staticPlayerData = [
         {
             name: "BenKenobi",
-            startingPoints: 120,
-            counterAttack: 15,
+            health: 120,
             attackDmg: 8,
+            counterDmg: 15,
         },
         {
             name: "LukeSkywalker",
-            startingPoints: 100,
-            counterAttack: 5,
+            health: 100,
             attackDmg: 4,
+            counterDmg: 5,
+            
         },
         {
             name: "DarthSidious",
-            startingPoints: 150,
-            counterAttack: 20,
+            health: 150,
             attackDmg: 12,
+            counterDmg: 20,
+            
         },
         {
             name: "DarthMaul",
-            startingPoints: 180,
-            counterAttack: 25,
+            health: 180,
             attackDmg: 15,
+            counterDmg: 25,
+            
         }
     ]
 
@@ -65,7 +68,7 @@ $(document).ready(function () {
             var luke = $("#LukeSkywalker");
             $("#skywalkerEnemy")[0].innerHTML = skywalkerPic;
             luke[0].innerHTML = "";
-
+            
             var palpatine = $("#DarthSidious");
             $("#sidiousEnemy")[0].innerHTML = sidiousPic;
             palpatine[0].innerHTML = "";
@@ -121,24 +124,76 @@ $(document).ready(function () {
         }
 
 
-        // event.target.parentNode.parentNode.innerHTML = ""; for myself
+
+
+    });
+
+    /////////////////////////////////////////////
+    // choosing enemy
+    //////////////////////////////////////////////
+    $(".enemyPics").on("click", function () {
+        currentGameState.enemyChosen = (event.target.parentNode.id);
+        var villianChosen = currentGameState.enemyChosen;
+        if (villianChosen === "BenKenobi") {
+
+            var obiwanK = $("#BenKenobi");
+            $("#currentEnemy")[0].innerHTML = kenobiPic;
+            $("#kenobiEnemy")[0].innerHTML = "";
+            obiwanK[0].innerHTML = "";
+        }
+
+        if (villianChosen === "LukeSkywalker") {
+
+            var luke = $("#LukeSkywalker");
+            $("#currentEnemy")[0].innerHTML = skywalkerPic;
+            $("#skywalkerEnemy")[0].innerHTML = "";
+            luke[0].innerHTML = "";
+        }
+
+        if (villianChosen === "DarthSidious") {
+
+            var palpatine = $("#DarthSidious");
+            $("#currentEnemy")[0].innerHTML = sidiousPic;
+            $("#sidiousEnemy")[0].innerHTML = "";
+            palpatine[0].innerHTML = "";
+        }
+
+        if (villianChosen === "DarthMaul") {
+
+            var darthMaul = $("#DarthMaul");
+            $("#currentEnemy")[0].innerHTML = maulPic;
+            $("#maulEnemy")[0].innerHTML = "";
+            darthMaul[0].innerHTML = "";
+        }
 
     });
 
 
+
+
+
+
+
+
+    //////////////////////////////
+    /////////////////////////////
+    // to be used after an enemy has been selected.
+    //////////////////////////////
 
 
     var adam = 0;
     $("#attackButton").on("click", function () {
         if (currentGameState.playerChosen && currentGameState.enemyChosen) {
             adam++;
+            console.log("HeroChosen: " + currentGameState.playerChosen)
+            console.log("EnemyChosen: " + currentGameState.enemyChosen)
             console.log(adam);
         }
 
     });
 
 
-    
+
 
     console.log("staticPlayerData name: " + ObiArray.name)
     console.log("staticPlayerData name: " + LukeArray.name)
@@ -149,10 +204,11 @@ $(document).ready(function () {
 
 
 
-    // BenKenobi = ["kenobi", 120, 15, 8]
-    // LukeSkywalker = ["skywalker", 100, 5, 4]
-    // DarthSidious = ["sidious", 150, 20, 12]
-    // DarthMaul = ["maul", 180, 25, 15]
+
+    BenKenobiStats = [120, 15, 8]
+    LukeSkywalkerStats = [100, 5, 4]
+    DarthSidiousStats = [150, 20, 12]
+    DarthMaulStats = [180, 25, 15]
 
 
     // function Player(characterType, health, counterAttack, attackPower) {
@@ -169,7 +225,7 @@ $(document).ready(function () {
     //     this.attackPower = attackPower;
     // }
 
-
+    // event.target.parentNode.parentNode.innerHTML = ""; for myself
 
 
 
