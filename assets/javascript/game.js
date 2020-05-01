@@ -1,7 +1,4 @@
 $( document ).ready(function() {
-    console.log( "ready!" );
-
-
 
 let player;
 let enemy;
@@ -52,22 +49,82 @@ $(".characterPics").on( "click", function() {
     currentGameState.playerChosen=(event.target.parentNode.id);
     var heroChosen=currentGameState.playerChosen;
     if (heroChosen === "BenKenobi"){
+
         var luke = $("#LukeSkywalker");
         $("#skywalkerEnemy")[0].innerHTML=skywalkerPic;
-        console.log( $("#skywalkerEnemy"));
-
-
+        // console.log( $("#skywalkerEnemy"));
         luke[0].innerHTML="";
-        // console.log(luke[0].parentNode.innerHTML);
+
+        var palpatine = $("#DarthSidious");
+        $("#sidiousEnemy")[0].innerHTML=sidiousPic;
+        // console.log( $("#sidiousEnemy"));
+        palpatine[0].innerHTML="";
+
+        var darthMaul = $("#DarthMaul");
+        $("#maulEnemy")[0].innerHTML=maulPic;
+        // console.log( $("#maulEnemy"));
+        darthMaul[0].innerHTML="";
+
     }
-    else if(heroChosen != "LukeSkywalker"){
-        event.target.parentNode.parentNode.innerHTML = "";
+
+    if(heroChosen === "LukeSkywalker"){
+        
+        var obiwanK = $("#BenKenobi");
+        $("#skywalkerEnemy")[0].innerHTML=kenobiPic;
+        // console.log( $("#kenobiEnemy"));
+        obiwanK[0].innerHTML="";
+
+        var palpatine = $("#DarthSidious");
+        $("#sidiousEnemy")[0].innerHTML=sidiousPic;
+        // console.log( $("#sidiousEnemy"));
+        palpatine[0].innerHTML="";
+
+        var darthMaul = $("#DarthMaul");
+        $("#maulEnemy")[0].innerHTML=maulPic;
+        // console.log( $("#maulEnemy"));
+        darthMaul[0].innerHTML="";
+        
+
     }
-    else if(heroChosen != "DarthSidious"){
-        event.target.parentNode.parentNode.innerHTML = "";
+
+    if(heroChosen === "DarthSidious"){
+       
+        var obiwanK = $("#BenKenobi");
+        $("#skywalkerEnemy")[0].innerHTML=kenobiPic;
+        // console.log( $("#kenobiEnemy"));
+        obiwanK[0].innerHTML="";
+
+        var darthMaul = $("#DarthMaul");
+        $("#maulEnemy")[0].innerHTML=maulPic;
+        // console.log( $("#maulEnemy"));
+        darthMaul[0].innerHTML="";
+
+        var luke = $("#LukeSkywalker");
+        $("#skywalkerEnemy")[0].innerHTML=skywalkerPic;
+        // console.log( $("#skywalkerEnemy"));
+        luke[0].innerHTML="";
+       
+        
     }
-    else if(heroChosen != "DarthMaul"){
-        event.target.parentNode.parentNode.innerHTML = "";
+
+    if(heroChosen === "DarthMaul"){
+        
+        var luke = $("#LukeSkywalker");
+        $("#skywalkerEnemy")[0].innerHTML=skywalkerPic;
+        // console.log( $("#skywalkerEnemy"));
+        luke[0].innerHTML="";
+
+        var palpatine = $("#DarthSidious");
+        $("#sidiousEnemy")[0].innerHTML=sidiousPic;
+        // console.log( $("#sidiousEnemy"));
+        palpatine[0].innerHTML="";
+
+        var obiwanK = $("#BenKenobi");
+        $("#skywalkerEnemy")[0].innerHTML=kenobiPic;
+        // console.log( $("#kenobiEnemy"));
+        obiwanK[0].innerHTML="";
+      
+        
     }
 
 
@@ -113,20 +170,8 @@ $(".characterPics").on( "click", function() {
 $("#kenobi").append(kenobiPic);
 $("#skywalker").append(skywalkerPic);
 $("#sidious").append(sidiousPic);
-$("#maul").append(maulPic)
+$("#maul").append(maulPic);
 
-if (count === 1) {
-    player = "ObiWan";
-}
-else if (count === 2) {
-    player = "LukeSkywalker";
-}
-else if (count === 3) {
-    player = "DarthSidious";
-}
-else if (count === 4) {
-    player = "DarthMaul";
-}
 
 
 
