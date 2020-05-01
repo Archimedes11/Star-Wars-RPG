@@ -70,7 +70,7 @@ $(".characterPics").on( "click", function() {
     if(heroChosen === "LukeSkywalker"){
         
         var obiwanK = $("#BenKenobi");
-        $("#skywalkerEnemy")[0].innerHTML=kenobiPic;
+        $("#kenobiEnemy")[0].innerHTML=kenobiPic;
         // console.log( $("#kenobiEnemy"));
         obiwanK[0].innerHTML="";
 
@@ -90,7 +90,7 @@ $(".characterPics").on( "click", function() {
     if(heroChosen === "DarthSidious"){
        
         var obiwanK = $("#BenKenobi");
-        $("#skywalkerEnemy")[0].innerHTML=kenobiPic;
+        $("#kenobiEnemy")[0].innerHTML=kenobiPic;
         // console.log( $("#kenobiEnemy"));
         obiwanK[0].innerHTML="";
 
@@ -120,7 +120,7 @@ $(".characterPics").on( "click", function() {
         palpatine[0].innerHTML="";
 
         var obiwanK = $("#BenKenobi");
-        $("#skywalkerEnemy")[0].innerHTML=kenobiPic;
+        $("#kenobiEnemy")[0].innerHTML=kenobiPic;
         // console.log( $("#kenobiEnemy"));
         obiwanK[0].innerHTML="";
       
