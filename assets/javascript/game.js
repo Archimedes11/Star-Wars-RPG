@@ -3,8 +3,10 @@ $(document).ready(function () {
     //Defines two songs and a flag to be used later.
     var imperialMarch = new Audio('./assets/songs/Darth.mp3');
     var jediSong = new Audio('./assets/songs/Jedi.mp3');
+    var lightsaberOn = new Audio('./assets/songs/LightsaberOn.mp3');
     flag = false;
 
+    
 
     //Links to my pics
     var kenobiPic = '<a href="#" id="BenKenobi"><img src="./assets/images/kenobi.jpg" alt="BenKenobi"></img></a>';
@@ -84,6 +86,7 @@ $(document).ready(function () {
                 heroArray = ObiArray;
                 originalAttackDmg = heroArray.attackDmg;
                 originalHealth = heroArray.health;
+                
 
                 var luke = $("#LukeSkywalker");
                 $("#skywalkerEnemy")[0].innerHTML = skywalkerPic;
@@ -214,6 +217,14 @@ $(document).ready(function () {
     $("#attackButton").on("click", function () {
         if (currentGameState.playerChosen && currentGameState.enemyChosen) {
 
+            if ($("#currentEnemy")[0].innerHTML === ''){
+                $("#attackText")[0].innerHTML = "No enemy here.";
+                $("#counterText")[0].innerHTML = "";
+                return;
+            }
+
+            lightsaberOn.play();
+
             console.log("Hero's beginning attack dmg: " + originalAttackDmg);
             console.log("Hero health (before click): " + heroArray.health);
             console.log("Villian's counter dmg: " + villianArray.counterDmg)
@@ -234,9 +245,9 @@ $(document).ready(function () {
             //The bottom text during gameplay.
             if ((heroArray.health >= 0) && (villianArray.health >= 0)) {
                 $("#attackText")[0].innerHTML = "";
-                $("#attackText").append("You attacked " + villianArray.name + " for " + (heroArray.attackDmg - originalAttackDmg) + " damage!");
+                $("#attackText").append("<p>" + "You attacked " + villianArray.name + " for " + (heroArray.attackDmg - originalAttackDmg) + " damage!" + "</p>");
                 $("#counterText")[0].innerHTML = "";
-                $("#counterText").append("" + villianArray.name + " attacked you back for  " + villianArray.counterDmg + " damage!");
+                $("#counterText").append("<p>" + villianArray.name + " attacked you back for  " + villianArray.counterDmg + " damage!" + "</p>");
 
             }
 
@@ -245,7 +256,7 @@ $(document).ready(function () {
 
                 //Fixes the text at the bottom
                 $("#attackText")[0].innerHTML = "";
-                $("#attackText").append("You have defeated " + villianArray.name + ", you can choose to fight another enemy");
+                $("#attackText").append("<p>" + "You have defeated " + villianArray.name + ", you can choose to fight another enemy" + "</p>");
                 $("#counterText")[0].innerHTML = "";
                 //Clearing the last row
                 $("#currentEnemy")[0].innerHTML = "";
