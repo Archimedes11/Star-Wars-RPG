@@ -225,22 +225,22 @@ $(document).ready(function () {
 
             lightsaberOn.play();
 
-            console.log("Hero's beginning attack dmg: " + originalAttackDmg);
-            console.log("Hero health (before click): " + heroArray.health);
-            console.log("Villian's counter dmg: " + villianArray.counterDmg)
+            // console.log("Hero's beginning attack dmg: " + originalAttackDmg);
+            // console.log("Hero health (before click): " + heroArray.health);
+            // console.log("Villian's counter dmg: " + villianArray.counterDmg)
 
             //Changes the health of the hero depending on the enemy's counter attack.
             heroArray.health -= villianArray.counterDmg;
-            console.log("Hero health (after click): " + heroArray.health);
+            // console.log("Hero health (after click): " + heroArray.health);
 
-            console.log("Villian's health (before click): " + villianArray.health);
+            // console.log("Villian's health (before click): " + villianArray.health);
             //Changes the health of the villian depending on the hero's attack.
             villianArray.health -= heroArray.attackDmg;
-            console.log("Villian's health (after click): " + villianArray.health);
+            // console.log("Villian's health (after click): " + villianArray.health);
 
             //Raises the attack damage of the hero as the game progresses.
             heroArray.attackDmg += originalAttackDmg;
-            console.log("Hero's current attack dmg: " + heroArray.attackDmg);
+            // console.log("Hero's current attack dmg: " + heroArray.attackDmg);
 
             //The bottom text during gameplay.
             if ((heroArray.health >= 0) && (villianArray.health >= 0)) {
@@ -273,7 +273,7 @@ $(document).ready(function () {
                 $("#attackText")[0].innerHTML = "<h2>Strong with you The Force is......</h2>";
                 $("#counterText")[0].innerHTML = '<button id="resetButton">Reset!</button>';
                 $("#counterText").on("click", "#resetButton", function () {
-                    console.log("Reset has been Pushed");// delete later
+                    
                     //Clearing the first row.
                     $("#kenobi")[0].innerHTML = "";
                     $("#skywalker")[0].innerHTML = "";
@@ -312,7 +312,7 @@ $(document).ready(function () {
                 $("#attackText")[0].innerHTML = "<h2>You have been defeated..... The Force is weak with you......</h2>";
                 $("#counterText")[0].innerHTML = '<button id="resetButton">Reset!</button>';
                 $("#counterText").on("click", "#resetButton", function () {
-                    console.log("Reset has been Pushed");// delete later
+        
                     //Clearing the first row.
                     $("#kenobi")[0].innerHTML = "";
                     $("#skywalker")[0].innerHTML = "";
