@@ -267,7 +267,7 @@ $(document).ready(function () {
             // If you win the game
             if (wins === 3 && flag === false) {
                 jediSong.play();
-                $("#attackText")[0].innerHTML = "<h2>You have WON!..... Strong with you The Force is......</h2>";
+                $("#attackText")[0].innerHTML = "<h2>Strong with you The Force is......</h2>";
                 $("#counterText")[0].innerHTML = '<button id="resetButton">Reset!</button>';
                 $("#counterText").on("click", "#resetButton", function () {
                     console.log("Reset has been Pushed");// delete later
