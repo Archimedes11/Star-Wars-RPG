@@ -17,11 +17,12 @@ body{
     font-family:"starwars";
     font-size: larger;
     color: gold;
+    border-style: solid;
+    background-color: black;
 }
 
 .secondaryHeader,
 .characterPics,
-#button,
 .battlePic,
 #attackText,
 #counterText
@@ -30,11 +31,4 @@ body{
     font-family:"starwars";
 }
 
-p{
-    color:grey;
-}
 
-#attackButton,
-#resetButton{
-    size: 3em;
-}
