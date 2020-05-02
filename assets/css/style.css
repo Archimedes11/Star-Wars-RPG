@@ -6,6 +6,7 @@
 img{
     width:175px;
     height: 175px;
+    
 }
 
 body{
@@ -22,8 +23,6 @@ body{
 }
 
 .secondaryHeader,
-.characterPics,
-.battlePic,
 #attackText,
 #counterText
 {
@@ -32,3 +31,42 @@ body{
 }
 
 
+.darthMaul,
+.sid,
+.luke,
+.obi{
+    width: 175px;
+    color:black; 
+    background-color:white; 
+    position: relative;
+    text-align: center;
+    font-family:"starwars";
+    font-weight: lighter;
+    display: block;
+    object-position: top;
+}
+
+
+
+.darthMaulHealth,
+.sidHealth,
+.lukeHealth,
+.obiHealth{
+    width: 175px;
+    color:black; 
+    background-color:white; 
+    position: relative;
+    text-align: center;
+    font-family:"starwars";
+    font-weight: lighter;
+    display: block;
+    object-position: bottom;
+}
+
+#kenobi,
+#skywalker,
+#sidious,
+#maul{
+    display: inline-block;
+
+}

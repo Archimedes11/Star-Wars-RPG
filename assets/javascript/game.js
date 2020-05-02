@@ -6,13 +6,14 @@ $(document).ready(function () {
     var lightsaberOn = new Audio('./assets/songs/LightsaberOn.mp3');
     flag = false;
 
-    
+
 
     //Links to my pics
-    var kenobiPic = '<a href="#" id="BenKenobi"><img src="./assets/images/kenobi.jpg" alt="BenKenobi"></img></a>';
-    var skywalkerPic = '<a href="#" id="LukeSkywalker"><img src="./assets/images/skywalker.jpg" alt="LukeSkywalker"></a>';
-    var sidiousPic = '<a href="#" id="DarthSidious"><img src="./assets/images/sidious.jpg" alt="DarthSidious"></a>';
-    var maulPic = '<a href="#" id="DarthMaul" ><img src="./assets/images/maul.jpg" alt="DarthMaul"></a>';
+    var kenobiPic = '<a href="#" id="BenKenobi"><img src="./assets/images/kenobi.jpg" alt="BenKenobi"><span class="obi">Ben Kenobi</span><span class="obiHealth">120</span></a>';
+    var skywalkerPic = '<a href="#" id="LukeSkywalker"><img src="./assets/images/skywalker.jpg" alt="LukeSkywalker"><span class="luke">Luke Skywalker</span><span class="lukeHealth">100</span></a>';
+    var sidiousPic = '<a href="#" id="DarthSidious"><img src="./assets/images/sidious.jpg" alt="DarthSidious"><span class="sid">Darth Sidious</span><span class="sidHealth">150</span></a>';
+    var maulPic = '<a href="#" id="DarthMaul"><img src="./assets/images/maul.jpg" alt="DarthMaul"><span class="darthMaul">Darth maul</span><span class="darthMaulHealth">180</span></a>';
+
 
     // Adds the pictures to the character choices divs (lines 28-41 in HTML file)
     $("#kenobi").append(kenobiPic);
@@ -74,7 +75,7 @@ $(document).ready(function () {
     wins = 0;
 
     if (true) { // I had to put all of the choosing of a character in this if statement
-                // or else it wouldnt work :(
+        // or else it wouldnt work :(
         //////////////////////////////////////////////
         //  Choosing the Hero  //////////////////////
         //////////////////////////////////////////////
@@ -86,7 +87,8 @@ $(document).ready(function () {
                 heroArray = ObiArray;
                 originalAttackDmg = heroArray.attackDmg;
                 originalHealth = heroArray.health;
-                
+
+
 
                 var luke = $("#LukeSkywalker");
                 $("#skywalkerEnemy")[0].innerHTML = skywalkerPic;
@@ -213,11 +215,16 @@ $(document).ready(function () {
         });
     }
 
+
+
     //Characters are Selected and the real game begins
     $("#attackButton").on("click", function () {
         if (currentGameState.playerChosen && currentGameState.enemyChosen) {
 
-            if ($("#currentEnemy")[0].innerHTML === ''){
+            console.log("hero " + currentGameState.playerChosen);
+            console.log("villian " + currentGameState.enemyChosen);
+
+            if ($("#currentEnemy")[0].innerHTML === '') {
                 $("#attackText")[0].innerHTML = "No enemy here.";
                 $("#counterText")[0].innerHTML = "";
                 return;
@@ -241,6 +248,54 @@ $(document).ready(function () {
             //Raises the attack damage of the hero as the game progresses.
             heroArray.attackDmg += originalAttackDmg;
             // console.log("Hero's current attack dmg: " + heroArray.attackDmg);
+
+
+
+            ////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////
+            if (currentGameState.playerChosen === "BenKenobi") {
+                $(".obiHealth").innerHTML = "";
+                $(".obiHealth").innerHTML = heroArray.health;
+                // $(".obiHealth").append(heroArray.health);
+                console.log(heroArray.health);
+            }
+            if (currentGameState.playerChosen === "LukeSkywalker") {
+                $(".lukeHealth").innerHTML = "";
+            }   $(".lukeHealth").append(heroArray.health);
+            if (currentGameState.playerChosen === "DarthSidious") {
+                $(".sidHealth").innerHTML =  "";
+            }   $(".sidHealth").append(heroArray.health);
+            if (currentGameState.playerChosen === "DarthMaul") {
+                $(".darthMaulHealth").innerHTML =  "";
+            }   $(".darthMaulHealth").append(heroArray.health);
+            /////////////////////////////////////////////////////
+            if (currentGameState.enemyChosen === "BenKenobi") {
+                $(".obiHealth").innerHTML =  "";
+            }   $(".obiHealth").append(villianArray.health);
+            if (currentGameState.enemyChosen === "LukeSkywalker") {
+                $(".lukeHealth").innerHTML =  "";
+            }   $(".lukeHealth").append(villianArray.health);
+            if (currentGameState.enemyChosen === "DarthSidious") {
+                $(".sidHealth").innerHTML =  "";
+            }   $(".sidHealth").append(villianArray.health);
+            if (currentGameState.enemyChose === "DarthMaul") {
+                $(".darthMaulHealth").innerHTML =  "";
+            }   $(".darthMaulHealth").append(villianArray.health);
+            //////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
 
             //The bottom text during gameplay.
             if ((heroArray.health >= 0) && (villianArray.health >= 0)) {
@@ -273,7 +328,7 @@ $(document).ready(function () {
                 $("#attackText")[0].innerHTML = "<h2>Strong with you The Force is......</h2>";
                 $("#counterText")[0].innerHTML = '<button id="resetButton">Reset!</button>';
                 $("#counterText").on("click", "#resetButton", function () {
-                    
+
                     //Clearing the first row.
                     $("#kenobi")[0].innerHTML = "";
                     $("#skywalker")[0].innerHTML = "";
@@ -312,7 +367,7 @@ $(document).ready(function () {
                 $("#attackText")[0].innerHTML = "<h2>You have been defeated..... The Force is weak with you......</h2>";
                 $("#counterText")[0].innerHTML = '<button id="resetButton">Reset!</button>';
                 $("#counterText").on("click", "#resetButton", function () {
-        
+
                     //Clearing the first row.
                     $("#kenobi")[0].innerHTML = "";
                     $("#skywalker")[0].innerHTML = "";
@@ -345,7 +400,7 @@ $(document).ready(function () {
                 })
 
             }
-            
+
         }
 
     });
