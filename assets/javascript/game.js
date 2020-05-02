@@ -1,28 +1,30 @@
 $(document).ready(function () {
 
+    //Defines two songs and a flag to be used later.
     var imperialMarch = new Audio('./assets/songs/Darth.mp3');
     var jediSong = new Audio('./assets/songs/Jedi.mp3');
     flag = false;
 
 
-
+    //Links to my pics
     var kenobiPic = '<a href="#" id="BenKenobi"><img src="./assets/images/kenobi.jpg" alt="BenKenobi"></img></a>';
     var skywalkerPic = '<a href="#" id="LukeSkywalker"><img src="./assets/images/skywalker.jpg" alt="LukeSkywalker"></a>';
     var sidiousPic = '<a href="#" id="DarthSidious"><img src="./assets/images/sidious.jpg" alt="DarthSidious"></a>';
     var maulPic = '<a href="#" id="DarthMaul" ><img src="./assets/images/maul.jpg" alt="DarthMaul"></a>';
 
-    // Adds the pictures to the character choices div (lines 26-31 in HTML file)
+    // Adds the pictures to the character choices divs (lines 28-41 in HTML file)
     $("#kenobi").append(kenobiPic);
     $("#skywalker").append(skywalkerPic);
     $("#sidious").append(sidiousPic);
     $("#maul").append(maulPic);
 
-    // This is used on line 60
+    //This object will be used quite often to define my characters.
     var currentGameState = {
         playerChosen: "",
         enemyChosen: "",
     }
 
+    //This is the "Heart" of the program that holds the character data that will be needed later.
     staticPlayerData = [
         {
             name: "Ben Kenobi",
@@ -53,21 +55,27 @@ $(document).ready(function () {
         }
     ]
 
+    //Creates seperate object arrays for each character.
     ObiArray = staticPlayerData[0];
     LukeArray = staticPlayerData[1];
     SidiousArray = staticPlayerData[2];
     MaulArray = staticPlayerData[3];
+
+    //Defines empty array variables for use later.
     heroArray = [];
     villianArray = [];
+
+    //Defines variables that I will use later in resets.
     originalAttackDmg = 0;
     originalHealth = 0;
     villianHealth = 0;
     wins = 0;
-    losses = 0;
 
-
-    if (true) {
-        // Decides who is the "hero" and who are the potential enemies
+    if (true) { // I had to put all of the choosing of a character in this if statement
+                // or else it wouldnt work :(
+        //////////////////////////////////////////////
+        //  Choosing the Hero  //////////////////////
+        //////////////////////////////////////////////
         $(".characterPics").on("click", function () {
             currentGameState.playerChosen = (event.target.parentNode.id);
             var heroChosen = currentGameState.playerChosen;
@@ -147,13 +155,10 @@ $(document).ready(function () {
                 obiwanK[0].innerHTML = "";
             }
 
-
-
-
         });
 
-        /////////////////////////////////////////////
-        // choosing enemy
+        //////////////////////////////////////////////
+        //  Choosing the Enemy  //////////////////////
         //////////////////////////////////////////////
         $(".enemyPics").on("click", function () {
             currentGameState.enemyChosen = (event.target.parentNode.id);
@@ -205,43 +210,28 @@ $(document).ready(function () {
         });
     }
 
-
-
-
-
-
-
-    //////////////////////////////
-    /////////////////////////////
-    // to be used after an enemy has been selected.
-    //////////////////////////////
-
-
-
-
+    //Characters are Selected and the real game begins
     $("#attackButton").on("click", function () {
-
-
-
-
         if (currentGameState.playerChosen && currentGameState.enemyChosen) {
 
-
             console.log("Hero's beginning attack dmg: " + originalAttackDmg);
-
             console.log("Hero health (before click): " + heroArray.health);
             console.log("Villian's counter dmg: " + villianArray.counterDmg)
+
+            //Changes the health of the hero depending on the enemy's counter attack.
             heroArray.health -= villianArray.counterDmg;
             console.log("Hero health (after click): " + heroArray.health);
 
             console.log("Villian's health (before click): " + villianArray.health);
+            //Changes the health of the villian depending on the hero's attack.
             villianArray.health -= heroArray.attackDmg;
             console.log("Villian's health (after click): " + villianArray.health);
 
+            //Raises the attack damage of the hero as the game progresses.
             heroArray.attackDmg += originalAttackDmg;
             console.log("Hero's current attack dmg: " + heroArray.attackDmg);
 
-            //If neither has won:
+            //The bottom text during gameplay.
             if ((heroArray.health >= 0) && (villianArray.health >= 0)) {
                 $("#attackText")[0].innerHTML = "";
                 $("#attackText").append("You attacked " + villianArray.name + " for " + (heroArray.attackDmg - originalAttackDmg) + " damage!");
@@ -264,7 +254,9 @@ $(document).ready(function () {
                 wins++;
             }
 
-            // If you win the game
+            //////////////////////////////////
+            ////////////////RESET/////////////.......if you win :)
+            //////////////////////////////////
             if (wins === 3 && flag === false) {
                 jediSong.play();
                 $("#attackText")[0].innerHTML = "<h2>Strong with you The Force is......</h2>";
@@ -295,105 +287,56 @@ $(document).ready(function () {
                     heroArray.health = originalHealth;
                     villianArray.health = villianHealth;
 
-                    //Stops Imperial March
+                    //Stops "The Force Theme"
                     jediSong.pause();
                     flag = true;
 
-
                 })
             }
-
-
-
-
-
-
-
-
-
+            //////////////////////////////////
             ////////////////RESET/////////////.......if you lose :(
+            //////////////////////////////////
             if (heroArray.health <= 0) {
-                    imperialMarch.play();
-                    $("#attackText")[0].innerHTML = "<h2>You have been defeated..... The Force is weak with you......</h2>";
-                    $("#counterText")[0].innerHTML = '<button id="resetButton">Reset!</button>';
-                    $("#counterText").on("click", "#resetButton", function () {
-                        console.log("Reset has been Pushed");// delete later
-                        //Clearing the first row.
-                        $("#kenobi")[0].innerHTML = "";
-                        $("#skywalker")[0].innerHTML = "";
-                        $("#sidious")[0].innerHTML = "";
-                        $("#maul")[0].innerHTML = "";
-                        //Adding the original pictures.
-                        $("#kenobi").append(kenobiPic);
-                        $("#skywalker").append(skywalkerPic);
-                        $("#sidious").append(sidiousPic);
-                        $("#maul").append(maulPic);
-                        //Clearing the second row.
-                        $("#kenobiEnemy")[0].innerHTML = "";
-                        $("#skywalkerEnemy")[0].innerHTML = "";
-                        $("#sidiousEnemy")[0].innerHTML = "";
-                        $("#maulEnemy")[0].innerHTML = "";
-                        //Clearing the last row
-                        $("#currentEnemy")[0].innerHTML = "";
-                        //Clearing the reset button.
-                        $("#attackText")[0].innerHTML = "";
-                        $("#counterText")[0].innerHTML = "";
+                imperialMarch.play();
+                $("#attackText")[0].innerHTML = "<h2>You have been defeated..... The Force is weak with you......</h2>";
+                $("#counterText")[0].innerHTML = '<button id="resetButton">Reset!</button>';
+                $("#counterText").on("click", "#resetButton", function () {
+                    console.log("Reset has been Pushed");// delete later
+                    //Clearing the first row.
+                    $("#kenobi")[0].innerHTML = "";
+                    $("#skywalker")[0].innerHTML = "";
+                    $("#sidious")[0].innerHTML = "";
+                    $("#maul")[0].innerHTML = "";
+                    //Adding the original pictures.
+                    $("#kenobi").append(kenobiPic);
+                    $("#skywalker").append(skywalkerPic);
+                    $("#sidious").append(sidiousPic);
+                    $("#maul").append(maulPic);
+                    //Clearing the second row.
+                    $("#kenobiEnemy")[0].innerHTML = "";
+                    $("#skywalkerEnemy")[0].innerHTML = "";
+                    $("#sidiousEnemy")[0].innerHTML = "";
+                    $("#maulEnemy")[0].innerHTML = "";
+                    //Clearing the last row
+                    $("#currentEnemy")[0].innerHTML = "";
+                    //Clearing the reset button.
+                    $("#attackText")[0].innerHTML = "";
+                    $("#counterText")[0].innerHTML = "";
 
-                        //Setting the player stats back to the original
-                        heroArray.attackDmg = originalAttackDmg;
-                        heroArray.health = originalHealth;
-                        villianArray.health = villianHealth;
+                    //Setting the player stats back to the original
+                    heroArray.attackDmg = originalAttackDmg;
+                    heroArray.health = originalHealth;
+                    villianArray.health = villianHealth;
 
-                        //Stops Imperial March
-                        imperialMarch.pause();
+                    //Stops Imperial March
+                    imperialMarch.pause();
 
-                        // reset our variables back to emtpy strings and zeroes
-                        // move your HTML back to the way it was at the beginning
-                    })
-
-                }
-                // reset our variables back to emtpy strings and zeroes
-                // move your HTML back to the way it was at the beginning
-                //add styling to anchor tags: border, text,
-
-
-
-
+                })
 
             }
+            
+        }
 
-        });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // function Player(characterType, health, counterAttack, attackPower) {
-    //     this.characterType = characterType;
-    //     this.health = health;
-    //     this.counterAttack = counterAttack;
-    //     this.attackPower = attackPower;
-    // }
-
-    // function Enemy(characterType, health, counterAttack, attackPower) {
-    //     this.characterType = characterType;
-    //     this.health = health;
-    //     this.counterAttack = counterAttack;
-    //     this.attackPower = attackPower;
-    // }
-
-    // event.target.parentNode.parentNode.innerHTML = ""; for myself
-
-
+    });
 
 });
