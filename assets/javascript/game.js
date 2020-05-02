@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    var imperialMarch = new Audio('./assets/songs/Darth.mp3');
+    var jediSong = new Audio('./assets/songs/Jedi.mp3');
 
 
 
@@ -59,6 +61,8 @@ $(document).ready(function () {
     originalAttackDmg = 0;
     originalHealth = 0;
     villianHealth = 0;
+    wins = 0;
+    losses = 0;
 
 
     if (true) {
@@ -213,15 +217,15 @@ $(document).ready(function () {
 
 
 
-    
+
     $("#attackButton").on("click", function () {
-        // var round = 0; not sure why this doesnt work.
+
 
 
 
         if (currentGameState.playerChosen && currentGameState.enemyChosen) {
 
-             
+
             console.log("Hero's beginning attack dmg: " + originalAttackDmg);
 
             console.log("Hero health (before click): " + heroArray.health);
@@ -236,6 +240,7 @@ $(document).ready(function () {
             heroArray.attackDmg += originalAttackDmg;
             console.log("Hero's current attack dmg: " + heroArray.attackDmg);
 
+            //If neither has won:
             if ((heroArray.health >= 0) && (villianArray.health >= 0)) {
                 $("#attackText")[0].innerHTML = "";
                 $("#attackText").append("You attacked " + villianArray.name + " for " + (heroArray.attackDmg - originalAttackDmg) + " damage!");
@@ -244,12 +249,27 @@ $(document).ready(function () {
 
             }
 
-            ////////////////RESET/////////////
-            if (heroArray.health <= 0) {
-                $("#attackText")[0].innerHTML = "<h2>You have been defeated..... The Force is weak with you......</h2>";
+            //If you win a round.
+            if ((heroArray.health >= 0) && (villianArray.health <= 0)) {
+
+                //Fixes the text at the bottom
+                $("#attackText")[0].innerHTML = "";
+                $("#attackText").append("You have defeated " + villianArray.name + ", you can choose to fight another enemy");
+                $("#counterText")[0].innerHTML = "";
+                //Clearing the last row
+                $("#currentEnemy")[0].innerHTML = "";
+                //Setting the player stats back to the original
+                villianArray.health = villianHealth;
+                wins++;
+            }
+
+            // If you win the game
+            if (wins === 3) {
+                jediSong.play();
+                $("#attackText")[0].innerHTML = "<h2>You have WON!..... Strong with you The Force is......</h2>";
                 $("#counterText")[0].innerHTML = '<button id="resetButton">Reset!</button>';
                 $("#counterText").on("click", "#resetButton", function () {
-                    console.log("Reset has been Pushed")// delete later
+                    console.log("Reset has been Pushed");// delete later
                     //Clearing the first row.
                     $("#kenobi")[0].innerHTML = "";
                     $("#skywalker")[0].innerHTML = "";
@@ -265,8 +285,6 @@ $(document).ready(function () {
                     $("#skywalkerEnemy")[0].innerHTML = "";
                     $("#sidiousEnemy")[0].innerHTML = "";
                     $("#maulEnemy")[0].innerHTML = "";
-                    //Clearing the last row
-                    $("#currentEnemy")[0].innerHTML = "";
                     //Clearing the reset button.
                     $("#attackText")[0].innerHTML = "";
                     $("#counterText")[0].innerHTML = "";
@@ -276,38 +294,73 @@ $(document).ready(function () {
                     heroArray.health = originalHealth;
                     villianArray.health = villianHealth;
 
+                    //Stops Imperial March
+                    jediSong.pause();
 
 
-
-
-
-
-                    // reset our variables back to emtpy strings and zeroes
-                    // move your HTML back to the way it was at the beginning
                 })
-                
             }
-            //add styling to anchor tags: border, text,
 
 
 
-            // round+=1;
-            // console.log("HeroChosen: " + currentGameState.playerChosen)
-            // console.log("EnemyChosen: " + currentGameState.enemyChosen)
-            // console.log("Round # ") + (round); not sure why this doesnt work.
-
-            // console.log("hero name test: " + heroArray.name)
-            // console.log("hero health test: " + heroArray.health)
-            // console.log("hero attackDmg test: " + heroArray.attackDmg)
 
 
-            // console.log("villian name test: " + villianArray.name)
-            // console.log("villian health test: " + villianArray.health)
-            // console.log("villian counterDmg test: " + villianArray.counterDmg)
 
-        }
 
-    });
+
+
+            ////////////////RESET/////////////.......if you lose :(
+            if (heroArray.health <= 0) {
+                    imperialMarch.play();
+                    $("#attackText")[0].innerHTML = "<h2>You have been defeated..... The Force is weak with you......</h2>";
+                    $("#counterText")[0].innerHTML = '<button id="resetButton">Reset!</button>';
+                    $("#counterText").on("click", "#resetButton", function () {
+                        console.log("Reset has been Pushed");// delete later
+                        //Clearing the first row.
+                        $("#kenobi")[0].innerHTML = "";
+                        $("#skywalker")[0].innerHTML = "";
+                        $("#sidious")[0].innerHTML = "";
+                        $("#maul")[0].innerHTML = "";
+                        //Adding the original pictures.
+                        $("#kenobi").append(kenobiPic);
+                        $("#skywalker").append(skywalkerPic);
+                        $("#sidious").append(sidiousPic);
+                        $("#maul").append(maulPic);
+                        //Clearing the second row.
+                        $("#kenobiEnemy")[0].innerHTML = "";
+                        $("#skywalkerEnemy")[0].innerHTML = "";
+                        $("#sidiousEnemy")[0].innerHTML = "";
+                        $("#maulEnemy")[0].innerHTML = "";
+                        //Clearing the last row
+                        $("#currentEnemy")[0].innerHTML = "";
+                        //Clearing the reset button.
+                        $("#attackText")[0].innerHTML = "";
+                        $("#counterText")[0].innerHTML = "";
+
+                        //Setting the player stats back to the original
+                        heroArray.attackDmg = originalAttackDmg;
+                        heroArray.health = originalHealth;
+                        villianArray.health = villianHealth;
+
+                        //Stops Imperial March
+                        imperialMarch.pause();
+
+                        // reset our variables back to emtpy strings and zeroes
+                        // move your HTML back to the way it was at the beginning
+                    })
+
+                }
+                // reset our variables back to emtpy strings and zeroes
+                // move your HTML back to the way it was at the beginning
+                //add styling to anchor tags: border, text,
+
+
+
+
+
+            }
+
+        });
 
 
 
