@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     var imperialMarch = new Audio('./assets/songs/Darth.mp3');
     var jediSong = new Audio('./assets/songs/Jedi.mp3');
+    flag = false;
 
 
 
@@ -264,7 +265,7 @@ $(document).ready(function () {
             }
 
             // If you win the game
-            if (wins === 3) {
+            if (wins === 3 && flag === false) {
                 jediSong.play();
                 $("#attackText")[0].innerHTML = "<h2>You have WON!..... Strong with you The Force is......</h2>";
                 $("#counterText")[0].innerHTML = '<button id="resetButton">Reset!</button>';
@@ -296,6 +297,7 @@ $(document).ready(function () {
 
                     //Stops Imperial March
                     jediSong.pause();
+                    flag = true;
 
 
                 })
