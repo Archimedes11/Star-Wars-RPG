@@ -232,22 +232,22 @@ $(document).ready(function () {
 
             lightsaberOn.play();
 
-            // console.log("Hero's beginning attack dmg: " + originalAttackDmg);
-            // console.log("Hero health (before click): " + heroArray.health);
-            // console.log("Villian's counter dmg: " + villianArray.counterDmg)
+            console.log("Hero's beginning attack dmg: " + originalAttackDmg);
+            console.log("Hero health (before click): " + heroArray.health);
+            console.log("Villian's counter dmg: " + villianArray.counterDmg)
 
             //Changes the health of the hero depending on the enemy's counter attack.
             heroArray.health -= villianArray.counterDmg;
             // console.log("Hero health (after click): " + heroArray.health);
 
-            // console.log("Villian's health (before click): " + villianArray.health);
+            console.log("Villian's health (before click): " + villianArray.health);
             //Changes the health of the villian depending on the hero's attack.
             villianArray.health -= heroArray.attackDmg;
-            // console.log("Villian's health (after click): " + villianArray.health);
+            console.log("Villian's health (after click): " + villianArray.health);
 
             //Raises the attack damage of the hero as the game progresses.
             heroArray.attackDmg += originalAttackDmg;
-            // console.log("Hero's current attack dmg: " + heroArray.attackDmg);
+            console.log("Hero's current attack dmg: " + heroArray.attackDmg);
 
 
 
@@ -255,33 +255,39 @@ $(document).ready(function () {
             ////////////////////////////////////////////////////
             ////////////////////////////////////////////////////
             if (currentGameState.playerChosen === "BenKenobi") {
-                $(".obiHealth").innerHTML = "";
-                $(".obiHealth").innerHTML = heroArray.health;
-                // $(".obiHealth").append(heroArray.health);
-                console.log(heroArray.health);
+                $(".obiHealth")[0].innerHTML = '';
+                $(".obiHealth").append(heroArray.health);
+            
             }
             if (currentGameState.playerChosen === "LukeSkywalker") {
-                $(".lukeHealth").innerHTML = "";
-            }   $(".lukeHealth").append(heroArray.health);
+                $(".lukeHealth")[0].innerHTML = '';
+                $(".lukeHealth").append(heroArray.health);
+            }
             if (currentGameState.playerChosen === "DarthSidious") {
-                $(".sidHealth").innerHTML =  "";
-            }   $(".sidHealth").append(heroArray.health);
+                $(".sidHealth")[0].innerHTML = '';
+                $(".sidHealth").append(heroArray.health);
+            }
             if (currentGameState.playerChosen === "DarthMaul") {
-                $(".darthMaulHealth").innerHTML =  "";
-            }   $(".darthMaulHealth").append(heroArray.health);
+                $(".darthMaulHealth")[0].innerHTML = '';
+                $(".darthMaulHealth").append(heroArray.health);
+            }
             /////////////////////////////////////////////////////
             if (currentGameState.enemyChosen === "BenKenobi") {
-                $(".obiHealth").innerHTML =  "";
-            }   $(".obiHealth").append(villianArray.health);
+                $(".obiHealth")[0].innerHTML = '';
+                $(".obiHealth").append(villianArray.health);
+            }
             if (currentGameState.enemyChosen === "LukeSkywalker") {
-                $(".lukeHealth").innerHTML =  "";
-            }   $(".lukeHealth").append(villianArray.health);
+                $(".lukeHealth")[0].innerHTML = '';
+                $(".lukeHealth").append(villianArray.health);
+            }
             if (currentGameState.enemyChosen === "DarthSidious") {
-                $(".sidHealth").innerHTML =  "";
-            }   $(".sidHealth").append(villianArray.health);
+                $(".sidHealth")[0].innerHTML = '';
+                $(".sidHealth").append(villianArray.health);
+            }
             if (currentGameState.enemyChose === "DarthMaul") {
-                $(".darthMaulHealth").innerHTML =  "";
-            }   $(".darthMaulHealth").append(villianArray.health);
+                $(".darthMaulHealth")[0].innerHTML = '';
+                $(".darthMaulHealth").append(villianArray.health);
+            }
             //////////////////////////////////////////////////////
             //////////////////////////////////////////////////////
             //////////////////////////////////////////////////////
