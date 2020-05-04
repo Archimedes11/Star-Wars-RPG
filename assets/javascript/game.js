@@ -12,7 +12,7 @@ $(document).ready(function () {
     var kenobiPic = '<a href="#" id="BenKenobi"><img src="./assets/images/kenobi.jpg" alt="BenKenobi"><span class="obi">Ben Kenobi</span><span class="obiHealth">120</span></a>';
     var skywalkerPic = '<a href="#" id="LukeSkywalker"><img src="./assets/images/skywalker.jpg" alt="LukeSkywalker"><span class="luke">Luke Skywalker</span><span class="lukeHealth">100</span></a>';
     var sidiousPic = '<a href="#" id="DarthSidious"><img src="./assets/images/sidious.jpg" alt="DarthSidious"><span class="sid">Darth Sidious</span><span class="sidHealth">150</span></a>';
-    var maulPic = '<a href="#" id="DarthMaul"><img src="./assets/images/maul.jpg" alt="DarthMaul"><span class="darthMaul">Darth maul</span><span class="darthMaulHealth">180</span></a>';
+    var maulPic = '<a href="#" id="DarthMaul"><img src="./assets/images/maul.jpg" alt="DarthMaul"><span class="darthMaul">Darth maul</span><span class="darthMaulHealth">140</span></a>';
 
 
     // Adds the pictures to the character choices divs
@@ -33,27 +33,27 @@ $(document).ready(function () {
             name: "Ben Kenobi",
             health: 120,
             attackDmg: 8,
-            counterDmg: 20,
+            counterDmg: 18,
         },
         {
             name: "Luke Skywalker",
             health: 100,
-            attackDmg: 15,
-            counterDmg: 15,
+            attackDmg: 10,
+            counterDmg: 8,
 
         },
         {
             name: "Darth Sidious",
             health: 150,
-            attackDmg: 12,
-            counterDmg: 16,
+            attackDmg: 6,
+            counterDmg: 10,
 
         },
         {
             name: "Darth Maul",
-            health: 115,
-            attackDmg: 15,
-            counterDmg: 116,
+            health: 140,
+            attackDmg: 8,
+            counterDmg: 13,
 
         }
     ]
@@ -372,7 +372,7 @@ $(document).ready(function () {
                 $(".sidHealth")[0].innerHTML = '';
                 $(".sidHealth").append(villianArray.health);
             }
-            if (currentGameState.enemyChose === "DarthMaul") {
+            if (currentGameState.enemyChosen === "DarthMaul") {
                 $(".darthMaulHealth")[0].innerHTML = '';
                 $(".darthMaulHealth").append(villianArray.health);
             }
