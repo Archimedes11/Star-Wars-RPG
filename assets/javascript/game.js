@@ -15,7 +15,7 @@ $(document).ready(function () {
     var maulPic = '<a href="#" id="DarthMaul"><img src="./assets/images/maul.jpg" alt="DarthMaul"><span class="darthMaul">Darth maul</span><span class="darthMaulHealth">180</span></a>';
 
 
-    // Adds the pictures to the character choices divs (lines 28-41 in HTML file)
+    // Adds the pictures to the character choices divs
     $("#kenobi").append(kenobiPic);
     $("#skywalker").append(skywalkerPic);
     $("#sidious").append(sidiousPic);
@@ -33,27 +33,27 @@ $(document).ready(function () {
             name: "Ben Kenobi",
             health: 120,
             attackDmg: 8,
-            counterDmg: 15,
+            counterDmg: 20,
         },
         {
             name: "Luke Skywalker",
             health: 100,
-            attackDmg: 4,
-            counterDmg: 5,
+            attackDmg: 14,
+            counterDmg: 15,
 
         },
         {
             name: "Darth Sidious",
             health: 150,
             attackDmg: 12,
-            counterDmg: 20,
+            counterDmg: 16,
 
         },
         {
             name: "Darth Maul",
             health: 180,
             attackDmg: 15,
-            counterDmg: 25,
+            counterDmg: 12,
 
         }
     ]
