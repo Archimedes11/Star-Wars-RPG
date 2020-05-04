@@ -58,7 +58,7 @@ $(document).ready(function () {
         }
     ]
 
-    //Creates seperate object arrays for each character.
+    //Creates seperate object arrays for each character of the game.
     ObiArray = staticPlayerData[0];
     LukeArray = staticPlayerData[1];
     SidiousArray = staticPlayerData[2];
@@ -82,13 +82,13 @@ $(document).ready(function () {
         $(".characterPics").on("click", function () {
             currentGameState.playerChosen = (event.target.parentNode.id);
             var heroChosen = currentGameState.playerChosen;
+
+
             if (heroChosen === "BenKenobi") {
 
                 heroArray = ObiArray;
                 originalAttackDmg = heroArray.attackDmg;
                 originalHealth = heroArray.health;
-
-
 
                 var luke = $("#LukeSkywalker");
                 $("#skywalkerEnemy")[0].innerHTML = skywalkerPic;
@@ -101,6 +101,23 @@ $(document).ready(function () {
                 var darthMaul = $("#DarthMaul");
                 $("#maulEnemy")[0].innerHTML = maulPic;
                 darthMaul[0].innerHTML = "";
+
+
+                $(".darthMaulHealth")[0].style.background = "red";
+                $(".darthMaulHealth")[0].style.color = "black";
+                $(".darthMaul")[0].style.background = "red";
+                $(".darthMaul")[0].style.color = "black";
+
+                $(".sidHealth")[0].style.background = "red";
+                $(".sidHealth")[0].style.color = "black";
+                $(".sid")[0].style.background = "red";
+                $(".sid")[0].style.color = "black";
+
+                $(".lukeHealth")[0].style.background = "red";
+                $(".lukeHealth")[0].style.color = "black";
+                $(".luke")[0].style.background = "red";
+                $(".luke")[0].style.color = "black";
+
             }
 
             if (heroChosen === "LukeSkywalker") {
@@ -120,6 +137,24 @@ $(document).ready(function () {
                 var darthMaul = $("#DarthMaul");
                 $("#maulEnemy")[0].innerHTML = maulPic;
                 darthMaul[0].innerHTML = "";
+
+
+                $(".darthMaulHealth")[0].style.background = "red";
+                $(".darthMaulHealth")[0].style.color = "black";
+                $(".darthMaul")[0].style.background = "red";
+                $(".darthMaul")[0].style.color = "black";
+
+                $(".sidHealth")[0].style.background = "red";
+                $(".sidHealth")[0].style.color = "black";
+                $(".sid")[0].style.background = "red";
+                $(".sid")[0].style.color = "black";
+
+                $(".obiHealth")[0].style.background = "red";
+                $(".obiHealth")[0].style.color = "black";
+                $(".obi")[0].style.background = "red";
+                $(".obi")[0].style.color = "black";
+
+
             }
 
             if (heroChosen === "DarthSidious") {
@@ -139,6 +174,24 @@ $(document).ready(function () {
                 var luke = $("#LukeSkywalker");
                 $("#skywalkerEnemy")[0].innerHTML = skywalkerPic;
                 luke[0].innerHTML = "";
+
+
+                $(".darthMaulHealth")[0].style.background = "red";
+                $(".darthMaulHealth")[0].style.color = "black";
+                $(".darthMaul")[0].style.background = "red";
+                $(".darthMaul")[0].style.color = "black";
+
+                $(".lukeHealth")[0].style.background = "red";
+                $(".lukeHealth")[0].style.color = "black";
+                $(".luke")[0].style.background = "red";
+                $(".luke")[0].style.color = "black";
+
+                $(".obiHealth")[0].style.background = "red";
+                $(".obiHealth")[0].style.color = "black";
+                $(".obi")[0].style.background = "red";
+                $(".obi")[0].style.color = "black";
+
+
             }
 
             if (heroChosen === "DarthMaul") {
@@ -158,7 +211,24 @@ $(document).ready(function () {
                 var obiwanK = $("#BenKenobi");
                 $("#kenobiEnemy")[0].innerHTML = kenobiPic;
                 obiwanK[0].innerHTML = "";
+
+                $(".sidHealth")[0].style.background = "red";
+                $(".sidHealth")[0].style.color = "black";
+                $(".sid")[0].style.background = "red";
+                $(".sid")[0].style.color = "black";
+
+                $(".lukeHealth")[0].style.background = "red";
+                $(".lukeHealth")[0].style.color = "black";
+                $(".luke")[0].style.background = "red";
+                $(".luke")[0].style.color = "black";
+
+                $(".obiHealth")[0].style.background = "red";
+                $(".obiHealth")[0].style.color = "black";
+                $(".obi")[0].style.background = "red";
+                $(".obi")[0].style.color = "black";
             }
+
+
 
         });
 
@@ -177,6 +247,11 @@ $(document).ready(function () {
                 $("#currentEnemy")[0].innerHTML = kenobiPic;
                 $("#kenobiEnemy")[0].innerHTML = "";
                 obiwanK[0].innerHTML = "";
+
+                $(".obiHealth")[0].style.background = "black";
+                $(".obiHealth")[0].style.color = "white";
+                $(".obi")[0].style.background = "black";
+                $(".obi")[0].style.color = "white";
             }
 
             if (villianChosen === "LukeSkywalker") {
@@ -188,6 +263,11 @@ $(document).ready(function () {
                 $("#currentEnemy")[0].innerHTML = skywalkerPic;
                 $("#skywalkerEnemy")[0].innerHTML = "";
                 luke[0].innerHTML = "";
+
+                $(".lukeHealth")[0].style.background = "black";
+                $(".lukeHealth")[0].style.color = "white";
+                $(".luke")[0].style.background = "black";
+                $(".luke")[0].style.color = "white";
             }
 
             if (villianChosen === "DarthSidious") {
@@ -199,6 +279,11 @@ $(document).ready(function () {
                 $("#currentEnemy")[0].innerHTML = sidiousPic;
                 $("#sidiousEnemy")[0].innerHTML = "";
                 palpatine[0].innerHTML = "";
+
+                $(".sidHealth")[0].style.background = "black";
+                $(".sidHealth")[0].style.color = "white";
+                $(".sid")[0].style.background = "black";
+                $(".sid")[0].style.color = "white";
             }
 
             if (villianChosen === "DarthMaul") {
@@ -210,9 +295,20 @@ $(document).ready(function () {
                 $("#currentEnemy")[0].innerHTML = maulPic;
                 $("#maulEnemy")[0].innerHTML = "";
                 darthMaul[0].innerHTML = "";
+
+                $(".darthMaulHealth")[0].style.background = "black";
+                $(".darthMaulHealth")[0].style.color = "white";
+                $(".darthMaul")[0].style.background = "black";
+                $(".darthMaul")[0].style.color = "white";
             }
 
+
+
+
+
         });
+
+
     }
 
 
@@ -221,8 +317,7 @@ $(document).ready(function () {
     $("#attackButton").on("click", function () {
         if (currentGameState.playerChosen && currentGameState.enemyChosen) {
 
-            console.log("hero " + currentGameState.playerChosen);
-            console.log("villian " + currentGameState.enemyChosen);
+
 
             if ($("#currentEnemy")[0].innerHTML === '') {
                 $("#attackText")[0].innerHTML = "No enemy here.";
@@ -232,9 +327,7 @@ $(document).ready(function () {
 
             lightsaberOn.play();
 
-            console.log("Hero's beginning attack dmg: " + originalAttackDmg);
-            console.log("Hero health (before click): " + heroArray.health);
-            console.log("Villian's counter dmg: " + villianArray.counterDmg)
+
 
             //Changes the health of the hero depending on the enemy's counter attack.
             heroArray.health -= villianArray.counterDmg;
@@ -252,12 +345,12 @@ $(document).ready(function () {
 
 
             ////////////////////////////////////////////////////
-            ////////////////////////////////////////////////////
+            //  DYNAMICALLY UPDATES THE "HERO'S" HEALTH
             ////////////////////////////////////////////////////
             if (currentGameState.playerChosen === "BenKenobi") {
                 $(".obiHealth")[0].innerHTML = '';
                 $(".obiHealth").append(heroArray.health);
-            
+
             }
             if (currentGameState.playerChosen === "LukeSkywalker") {
                 $(".lukeHealth")[0].innerHTML = '';
@@ -271,6 +364,8 @@ $(document).ready(function () {
                 $(".darthMaulHealth")[0].innerHTML = '';
                 $(".darthMaulHealth").append(heroArray.health);
             }
+            /////////////////////////////////////////////////////
+            //   DYNAMICALLY UPDATES THE "VILLIAN'S" HEALTH
             /////////////////////////////////////////////////////
             if (currentGameState.enemyChosen === "BenKenobi") {
                 $(".obiHealth")[0].innerHTML = '';
@@ -291,17 +386,6 @@ $(document).ready(function () {
             //////////////////////////////////////////////////////
             //////////////////////////////////////////////////////
             //////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
 
             //The bottom text during gameplay.
             if ((heroArray.health >= 0) && (villianArray.health >= 0)) {

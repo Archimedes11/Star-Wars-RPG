@@ -4,13 +4,17 @@
 }
 
 img{
-    width:175px;
+    width: 175px;
     height: 175px;
+    border: solid;
+    border-color: green;
     
 }
 
 body{
     background: url("https://wallpapertag.com/wallpaper/full/8/4/6/653852-star-wars-background-wallpaper-1920x1080-large-resolution.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .mainHeader{
@@ -36,14 +40,17 @@ body{
 .luke,
 .obi{
     width: 175px;
-    color:black; 
-    background-color:white; 
     position: relative;
     text-align: center;
     font-family:"starwars";
     font-weight: lighter;
     display: block;
     object-position: top;
+    border: solid;
+
+    color:black; 
+    background:white;
+    border-color: green;
 }
 
 
@@ -53,20 +60,33 @@ body{
 .lukeHealth,
 .obiHealth{
     width: 175px;
-    color:black; 
-    background-color:white; 
     position: relative;
     text-align: center;
     font-family:"starwars";
     font-weight: lighter;
     display: block;
     object-position: bottom;
+    border: solid;
+
+    color:black; 
+    background-color:white;
+    border-color: green;
+    
+    
+
 }
 
 #kenobi,
 #skywalker,
 #sidious,
-#maul{
+#maul,
+#kenobiEnemy,
+#skywalkerEnemy,
+#sidiousEnemy,
+#maulEnemy
+{
     display: inline-block;
 
 }
+
+
