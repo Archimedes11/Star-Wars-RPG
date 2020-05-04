@@ -38,7 +38,7 @@ $(document).ready(function () {
         {
             name: "Luke Skywalker",
             health: 100,
-            attackDmg: 14,
+            attackDmg: 15,
             counterDmg: 15,
 
         },
@@ -51,9 +51,9 @@ $(document).ready(function () {
         },
         {
             name: "Darth Maul",
-            health: 180,
+            health: 115,
             attackDmg: 15,
-            counterDmg: 12,
+            counterDmg: 116,
 
         }
     ]
