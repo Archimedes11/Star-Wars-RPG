@@ -76,7 +76,7 @@ $(document).ready(function () {
 
 
     //////////////////////////////////////////////
-    //  Choosing the Enemy  //////////////////////
+    //  Choosing the Hero  //////////////////////
     //////////////////////////////////////////////
     $(".characterPics").on("click", function () {
         currentGameState.playerChosen = (event.target.parentNode.id);
